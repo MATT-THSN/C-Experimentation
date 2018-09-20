@@ -5,37 +5,24 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-class author {
-    //Private Attributes
+class person {
     public:
-    int age = 0;
-    void functionGrabber();
-
+        void setName(char *input) {
+            name = (char *) malloc(80 * sizeof(char));
+            strcpy(name, input);
+        }
+        char * getName() {
+            return name;
+        }
     private:
-    char name[20];
-    void attributeAdder(char [], int &);
-
-    void author::functionGrabber() {
-        //Assign values to name and age
-        printf("\n\tGive me a name: ");
-        scanf("%s", name);
-        printf("\n\tGive me a age: ");
-        scanf("%d", age);
-        printf("\n\tYour name is: %s\n\tYour age is: %d\n");
-    }
-
-    void author::attributeAdder(char name, int * age) {
-        printf("\n\tGive me a name: ");
-        scanf("%s", name);
-        printf("\n\tGive me a age: ");
-        scanf("%d", age);
-        printf("\n\tYour name is: %s\n\tYour age is: %d\n");
-    }
+        char *name;
 };
 
 
 int main(void) {
-    author auth1;
-    auth1::functionGrabber();
+    person person1;
+    person1.setName((char *)"Matthew");
+    printf("\n\tYour name is: %s", person1.getName());
 }
